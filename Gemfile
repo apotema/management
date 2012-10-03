@@ -9,9 +9,18 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development do
+gem "responders"
+gem "simple_form"
+gem "haml"
+gem 'bcrypt-ruby'
+
+
+group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
 end
 
 gem 'jquery-rails'
