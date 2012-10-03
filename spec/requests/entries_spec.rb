@@ -13,6 +13,12 @@ describe "Todo List administration" do
       page.should have_content("entry name")
     end
 
+    it "should not add a invalid entry" do
+      fill_in "Name", with: "entry name" 
+      click_button "Create Entry"
+      page.should have_css('.error')
+    end
+
   end
 
   describe "entry edit" do
@@ -27,6 +33,12 @@ describe "Todo List administration" do
       page.should have_content("entry new name")
     end
 
+    it "should not save a  invalid entry" do
+      fill_in "Name", with: ""
+      fill_in "Priority", with: "5"
+      click_button "Update Entry"
+      page.should have_css('.error')
+    end
 
   end
 

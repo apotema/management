@@ -25,4 +25,25 @@ describe "User administration" do
 
   end
 
+  describe "User visualization" do
+
+    let!(:user) { FactoryGirl.create :user }
+    let!(:entries) { FactoryGirl.create_list :entry, 10, user: user }
+    let!(:entry) { entries.last }
+
+    before { visit user_path(user) }
+
+    it "should list all user entries" do
+      entries.each do |entry|
+        page.should have_content entry.name
+      end
+    end
+
+    it "shoul delete a entry" do
+      page.find(:xpath,"//table//tr/td[contains(.,'#{entry.name}')]/../td/a[contains(.,'Delete')]").click
+      page.should_not have_content entry.name
+    end
+
+  end
+
 end

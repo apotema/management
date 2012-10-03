@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20121003015446) do
   create_table "entries", :force => true do |t|
     t.string   "name"
     t.integer  "priority"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

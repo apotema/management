@@ -1,1 +1,22 @@
 = @user.name
+%br
+= link_to "New Entry", new_entry_path
+
+%table
+  %thead
+    %tr
+      %th
+        Name
+      %th
+        Priority
+      %th
+
+  %tbody
+    - @user.entries.each do |entry|
+      %tr
+        %td= entry.name
+        %td= entry.priority
+        %td.actions
+          = link_to "Show", entry
+          = link_to "Edit", edit_entry_path(entry)
+          = link_to "Delete", entry, :confirm => "Sure ?", :method => :delete

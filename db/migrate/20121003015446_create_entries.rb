@@ -3,7 +3,7 @@ class CreateEntries < ActiveRecord::Migration
     create_table :entries do |t|
       t.string :name
       t.integer :priority
-
+      t.references :user
       t.timestamps
     end
   end

@@ -5,7 +5,10 @@ class EntriesController < ApplicationController
   end
 
   def create
-    respond_with @entry = Entry.create(params[:entry])
+    @entry = Entry.new(params[:entry])
+    @entry.user = current_user
+    @entry.save
+    respond_with @entry
   end
 
   def show
@@ -19,5 +22,14 @@ class EntriesController < ApplicationController
   def update
     respond_with @entry = Entry.update(params[:id], params[:entry])
   end
+
+  def destroy 
+    respond_with @entry = Entry.destroy(params[:id]), location: user_path(current_user)
+  end
+
+  def current_user
+    User.create(name: "alexandre", login: "apotema", password: "123456")
+  end
+
 
 end

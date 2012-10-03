@@ -5,5 +5,8 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :login, presence: true
+  
+
+  has_many :entries
 
 end
