@@ -12,7 +12,7 @@ describe "User administration" do
       fill_in "Login", with: "apotema"
       fill_in "Password confirmation", with: "123456"
       click_button "Create User"
-      page.should have_content("user_name")
+      page.should have_css(".notice")
     end
 
     it "should not register a invalid user" do
@@ -20,7 +20,7 @@ describe "User administration" do
       fill_in "Password", with: "123456"
       fill_in "Password confirmation", with: "123456"
       click_button "Create User"
-      page.should have_css('.error')
+      page.should have_css(".error")
     end
 
   end

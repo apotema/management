@@ -9,6 +9,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "cancan"
 gem "responders"
 gem "simple_form"
 gem "haml"

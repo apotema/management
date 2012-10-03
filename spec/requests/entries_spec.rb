@@ -29,7 +29,7 @@ describe "Todo List administration" do
   describe "entry edit" do
 
     
-    let!(:entry) {FactoryGirl.create :entry }
+    let!(:entry) {FactoryGirl.create :entry, user: user }
     
     before do
       login user
