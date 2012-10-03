@@ -1,5 +1,5 @@
 Management::Application.routes.draw do
-  root :to => 'welcome#index'
+  root :to => 'sessions#login'
 
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#login', as: 'login'

@@ -5,7 +5,7 @@ describe "Authentication" do
   describe "user login" do
     
     let!(:user) { FactoryGirl.create :user }
-    before{visit login_path}
+    before{ visit login_path }
 
     it "should login a valid user" do
       fill_in "Login", with: user.login
