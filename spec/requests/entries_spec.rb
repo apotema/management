@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe "Todo List administration" do
   
-  let!(:user) {FactoryGirl.create :user }
+  let!(:user) { FactoryGirl.create :user }
 
   describe "entry add" do
     
@@ -28,8 +28,7 @@ describe "Todo List administration" do
 
   describe "entry edit" do
 
-    
-    let!(:entry) {FactoryGirl.create :entry, user: user }
+    let!(:entry) { FactoryGirl.create :entry, user: user }
     
     before do
       login user
@@ -43,7 +42,7 @@ describe "Todo List administration" do
       page.should have_content("entry new name")
     end
 
-    it "should not save a  invalid entry" do
+    it "should not save a invalid entry" do
       fill_in "Name", with: ""
       fill_in "Priority", with: "5"
       click_button "Update Entry"

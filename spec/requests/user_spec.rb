@@ -4,7 +4,7 @@ describe "User administration" do
   
   describe "User registration" do
     
-    before {visit new_user_path}
+    before { visit new_user_path }
 
     it "should register a valid user" do
       fill_in "Name", with: "user_name" 
@@ -31,9 +31,7 @@ describe "User administration" do
     let!(:entries) { FactoryGirl.create_list :entry, 10, user: user }
     let!(:entry) { entries.last }
 
-    before do 
-      login user
-    end
+    before { login user } 
 
     it "should list all user entries" do
       entries.each do |entry|
