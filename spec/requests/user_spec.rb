@@ -31,7 +31,9 @@ describe "User administration" do
     let!(:entries) { FactoryGirl.create_list :entry, 10, user: user }
     let!(:entry) { entries.last }
 
-    before { visit user_path(user) }
+    before do 
+      login user
+    end
 
     it "should list all user entries" do
       entries.each do |entry|
@@ -39,11 +41,19 @@ describe "User administration" do
       end
     end
 
-    it "shoul delete a entry" do
+    it "should delete a entry", js: true do
       page.find(:xpath,"//table//tr/td[contains(.,'#{entry.name}')]/../td/a[contains(.,'Delete')]").click
+      page.driver.browser.switch_to.alert.accept
       page.should_not have_content entry.name
     end
 
+  end
+
+  def login user
+    visit login_path
+    fill_in "Login", with: user.login
+    fill_in "Password", with: "123456"
+    click_button "Login"
   end
 
 end

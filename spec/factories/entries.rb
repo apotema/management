@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :entry do
-    name "MyString"
+    sequence(:name) {|n| "entry_name_#{n}"}
     priority 1
     user
   end

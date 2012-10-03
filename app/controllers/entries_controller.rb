@@ -27,9 +27,4 @@ class EntriesController < ApplicationController
     respond_with @entry = Entry.destroy(params[:id]), location: user_path(current_user)
   end
 
-  def current_user
-    User.create(name: "alexandre", login: "apotema", password: "123456")
-  end
-
-
 end

@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :login, :password, :password_confirmation
 
   validates :name, presence: true
-  validates :login, presence: true
-  
+  validates :login, presence: true, uniqueness: true
 
   has_many :entries
 

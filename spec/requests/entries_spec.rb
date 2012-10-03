@@ -2,9 +2,14 @@ require "spec_helper"
 
 describe "Todo List administration" do
   
+  let!(:user) {FactoryGirl.create :user }
+
   describe "entry add" do
     
-    before {visit new_entry_path}
+    before do
+      login user
+      visit new_entry_path
+    end
 
     it "should add a valid entry" do
       fill_in "Name", with: "entry name" 
@@ -23,9 +28,14 @@ describe "Todo List administration" do
 
   describe "entry edit" do
 
+    
     let!(:entry) {FactoryGirl.create :entry }
-    before {visit edit_entry_path(entry)}
- 
+    
+    before do
+      login user
+      visit edit_entry_path(entry)
+    end
+
     it "should edit the entry values" do
       fill_in "Name", with: "entry new name"
       fill_in "Priority", with: "5"
@@ -40,6 +50,13 @@ describe "Todo List administration" do
       page.should have_css('.error')
     end
 
+  end
+
+  def login user
+    visit login_path
+    fill_in "Login", with: user.login
+    fill_in "Password", with: "123456"
+    click_button "Login"
   end
 
 end
