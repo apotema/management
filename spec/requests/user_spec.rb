@@ -39,12 +39,6 @@ describe "User administration" do
       end
     end
 
-    it "should delete a entry", js: true do
-      page.find(:xpath,"//table//tr/td[contains(.,'#{entry.name}')]/../td/a[contains(.,'Delete')]").click
-      page.driver.browser.switch_to.alert.accept
-      page.should_not have_content entry.name
-    end
-
   end
 
 end

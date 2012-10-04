@@ -14,6 +14,14 @@ describe "Authentication" do
       page.should have_content user.name
     end
 
+    it "should not login a invalid user" do
+      fill_in "Login", with: user.login
+      fill_in "Password", with: "1111111"
+      click_button "Login"
+      page.should_not have_content user.name
+      page.should have_css('.alert')
+    end
+
   end
 
 end
