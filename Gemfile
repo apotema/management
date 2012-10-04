@@ -14,7 +14,7 @@ gem "responders"
 gem "simple_form"
 gem "haml"
 gem 'bcrypt-ruby'
-
+gem 'doorkeeper'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -22,6 +22,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'rack-test'
 end
 
 gem 'jquery-rails'

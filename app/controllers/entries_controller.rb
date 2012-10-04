@@ -7,10 +7,7 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @entry = Entry.new(params[:entry])
-    @entry.user = current_user
-    @entry.save
-    respond_with @entry
+    respond_with @entry = current_user.entries.create(params[:entry])
   end
 
   def show
