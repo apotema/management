@@ -5,6 +5,7 @@ describe User do
   subject { FactoryGirl.create :user }
   it { should validate_presence_of :name }
   it { should validate_presence_of :login }
+  it { should validate_uniqueness_of :login }
   it { should have_many :entries }
   
 end
